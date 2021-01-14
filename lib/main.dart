@@ -9,20 +9,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Demo', theme: ThemeData(
       primarySwatch: Colors.red,),
-      home: MyHomePage(title: 'Product layout demo home page'),
+      home: const MyHomePage(title: 'Product layout demo home page'),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  const MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title:Text("Product Listing")),
+        appBar: AppBar(title: const Text("Product Listing")),
         body: ListView(
           shrinkWrap: true,
           padding: const EdgeInsets.fromLTRB(2, 10, 2, 10),

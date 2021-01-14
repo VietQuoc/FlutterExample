@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'product_data.dart';
 
 class ProductBox extends StatelessWidget{
@@ -32,16 +33,14 @@ class ProductBox extends StatelessWidget{
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(2), height: 90,
-      child: Card(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Image.asset("assets/appimages/$image"),
-            Expanded(
-              child: GestureDetector(
-                onTap: () {
-                  _showDialog(context);
-                },
+      child: GestureDetector(
+        onTap: () => _showDialog(context),
+        child: Card(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Image.asset("assets/appimages/$image"),
+              Expanded(
                 child:
                 Container(
                   padding: const EdgeInsets.all(5),
@@ -55,19 +54,19 @@ class ProductBox extends StatelessWidget{
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
-List getListProductWidgets()
+List<Widget> getListProductWidgets()
   {
-    List list = [];
+    final List<Widget> list = [];
     for(var i = 0; i < Data.listData.length; i++){
-        list.add(ProductBox(Data.listData[i][0], Data.listData[i][1], Data.listData[i][2], Data.listData[i][3]));
+        list.add(ProductBox(Data.listData[i][0].toString(), Data.listData[i][1].toString(), int.parse(Data.listData[i][2].toString()), Data.listData[i][3].toString()));
     }
     return list;
   }
