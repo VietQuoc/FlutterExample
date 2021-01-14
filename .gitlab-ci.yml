@@ -1,0 +1,11 @@
+stages:
+  - test
+ 
+Test:
+  stage: test
+  script:
+    - rflint TestCase > "rflint_result.txt" || true
+    - python3 rflint_convert_text_to_html.py
+  artifacts:
+    paths:
+      - rflint_result.html
